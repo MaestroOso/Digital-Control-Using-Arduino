@@ -64,15 +64,16 @@ double der_Uk = 0;
 /** END  **/
 
 /** REFERENCES **/
-double refIzq = 0;
-double refDer = 15;
+/** Values between 0 to 20 (o to 1 revolutions per time unit) **/
+double refIzq = 13; //Left Reference
+double refDer = 13; //Right Reference
 
 void setup()
 {
 
     Serial.begin(9600); //Serial Comunincation with PC
 
-    pinMode(motor1, OUTPUT);
+    pinMode(motor1, OUTPUT); //Set output pins for motors
     pinMode(motor2, OUTPUT);
 
     pinMode(pinVCCEncoder1, OUTPUT);
@@ -131,7 +132,7 @@ void loop()
         if(izq_Uk < 0){
           izq_Uk =80;
         }
-        analogWrite(motor1, izq_Uk);
+        analogWrite(motor1, izq_Uk); //Control Actions
         izq_Ik1 = izq_Ik;
         izq_E1 = izq_E0;
 
@@ -170,7 +171,7 @@ void loop()
         if(der_Uk < 0){
           der_Uk = 80;
         }
-        analogWrite(motor2, der_Uk);
+        analogWrite(motor2, der_Uk); //Control Actions
         der_Ik1 = der_Ik;
         der_E1 = der_E0;
         
